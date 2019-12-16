@@ -1,0 +1,23 @@
+{
+	"name": "vkSecret",
+	"description": "Hides conversations with certain people from the list of dialogs",
+	"version": "1.0.0",
+	"manifest_version": 2,
+	"browser_action":{
+		"default_icon": "image/icon.png",
+		"default_title": "VK secret",
+		"default_popup": "index.html"
+	},
+	"background":{
+		"persistent": false,
+		"scripts": ["background.js"]
+	},
+	"content_scripts": [{
+		"matches": ["*://*.vk.com/*"],
+		"js":["jquery.js", "content.js"],
+		"css": ["css/customStyle.css"]
+	}],
+	"permissions":[
+		"storage"
+	]
+}
