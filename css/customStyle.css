@@ -40,15 +40,15 @@
 }
 
 /* The Close Button */
-.closeModal {
-  color: white;
+.removeUser {
+  color: black;
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
 
-.closeModal:hover,
-.closeModal:focus {
+.removeUser:hover,
+.removeUser:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;

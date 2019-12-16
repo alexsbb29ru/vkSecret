@@ -17,13 +17,15 @@ function addRow(tableId, rowInd, rowData){
 	var delCell = userRow.insertCell(1);
 
 	userCell.innerHTML = '<p>' + rowData.id + '</p>';
-	delCell.innerHTML = '<span id="removeUser" userId="' + rowData.id + '">&times;</span>'
+	delCell.innerHTML = '<span id="'+ rowData.id +'" class="removeUser" userId="' + rowData.id + '">&times;</span>';
+
+	var removeBtn = document.getElementById(rowData.id);
+	removeBtn.addEventListener('click', function(e){
+		var index = usersArray.indexOf(removeBtn.attributes['userId'].value);
+		usersArray.splice(index, 1);
+		pushUsersArray('Value is removed from storage');
+	});
 }
-
-// chrome.storage.sync.get(['customName'], function(result){
-// 	customNameBox.checked = result.customName;
-// });
-
 
 //Events
 let addUserInput = document.getElementById('addUserInput');
@@ -32,30 +34,25 @@ addUserInput.addEventListener('keydown', function(e){
 		var user = makeUserSettings(addUserInput.value)
 		usersArray.push(user);
 
-		chrome.storage.sync.set({'usersArray': usersArray}, function(){
-			console.log('Value is set to storage');
-		});
+		pushUsersArray('Value is set to storage');
 	}
 });
 
-let removeBtn = document.getElementById('removeUser');
-removeBtn.addEventListener('click',function(e){
-
-});
-
-// ctrlEntBox.addEventListener('change', function(e){
-// 	var checkValue = ctrlEntBox.checked;
-// 	chrome.storage.sync.set({'ctrlEnterGen': checkValue}, function(){
-// 		console.log('Value is set to storage');
+// let removeBtns = document.getElementsByClassName('removeUser');
+// for(btn of removeBtns){
+// 	btn.addEventListener('click',function(e){
+// 		var index = usersArray.indexOf(btn.attributes['userId'].value);
+// 		usersArray.splice(index, 1);
+// 		pushusersArray();
 // 	});
-// });
-// customNameBox.addEventListener('change', function(e){
-// 	var checkValue = customNameBox.checked;
-// 	chrome.storage.sync.set({'customName': checkValue}, function(){
-// 		console.log('Value is set to storage');
-// 	});
-// });
-// 
+// }
+
+function pushUsersArray(message){
+	chrome.storage.sync.set({'usersArray': usersArray}, function(){
+		console.log(message);
+	});
+}
+
 function makeUserSettings(id, flag){
 	return{id, flag};
 }
