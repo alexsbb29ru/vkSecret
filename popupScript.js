@@ -7,15 +7,15 @@ chrome.storage.sync.get(['usersArray'], function(result){
 		//add row for user with button for remove this
 		for(var i = 0; i < result.usersArray.length; i ++){
     		var user = result.usersArray[i];
-    		addRow('usersTable', i + 1, user)
+    		addRow('usersTable', user)
     	}
 	}
 });
 
 //Add new row with user to table
-function addRow(tableId, rowInd, rowData){
+function addRow(tableId, rowData){
 	var usersTable = document.getElementById('usersTable');
-	var userRow = usersTable.insertRow(rowInd);
+	var userRow = usersTable.insertRow(usersTable.rows.length);
 	var userCell = userRow.insertCell(0); // Cell for user id
 	var delCell = userRow.insertCell(1); //Cell for delete button
 
@@ -44,8 +44,9 @@ addUserInput.addEventListener('keydown', function(e){
 	if(e.keyCode == 13){
 		var user = makeUserSettings(addUserInput.value)
 		usersArray.push(user);
-
+		addRow('usersTable', user);
 		pushUsersArray('Value is set to storage');
+		addUserInput.value = '';
 	}
 });
 //Save array to storage
