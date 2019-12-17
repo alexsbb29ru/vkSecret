@@ -24,9 +24,17 @@ function getUsersSettings(){
 		    {
 		    	for(var i = 0; i < usersArray.length; i ++){
 		    		var user = usersArray[i];
-		    		document.querySelectorAll('[data-list-id="' + user.id + '"]')[0].style.display = 'none'
+		    		hideDialog(user);
 		    	}
 		    }
     	}
     });
+}
+
+function hideDialog(user){
+	document.querySelectorAll('[data-list-id="' + user.id + '"]')[0].style.display = 'none';
+}
+
+function hideFriend(user){
+	
 }

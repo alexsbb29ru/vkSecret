@@ -31,6 +31,10 @@ function addRow(tableId, rowInd, rowData){
 		usersArray.splice(index, 1);
 		//save array to storage
 		pushUsersArray('Value is removed from storage');
+
+		var rowI = document.getElementById(removeBtn.attributes['userId'].value).parentElement.parentElement.rowIndex;
+
+		usersTable.deleteRow(rowI);
 	});
 }
 
