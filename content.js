@@ -45,6 +45,9 @@ function hideFriend(user){
 	}
 }
 function hideFastChat(user){
+	var fc_avatar = document.getElementById('chat_tab_icon_' + user.id);
+	if(fc_avatar)
+		fc_avatar.style.display = 'none';
 	var friend = document.getElementById('fc_contact' + user.id);
 	if(friend)
 		friend.style.display = 'none';
