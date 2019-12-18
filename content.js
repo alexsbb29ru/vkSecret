@@ -4,7 +4,7 @@ const targetNode = document.body;
 const config = {attributes: true, childList: true, subtree: true};
 
 const callback = function(matationsList, observer){
-	if(document.URL == 'https://vk.com/im')
+	// if(document.URL == 'https://vk.com/im')
 		getUsersSettings();
 }
 
@@ -25,6 +25,7 @@ function getUsersSettings(){
 		    	for(var i = 0; i < usersArray.length; i ++){
 		    		var user = usersArray[i];
 		    		hideDialog(user);
+		    		hideFriend(user);
 		    	}
 		    }
     	}
@@ -32,9 +33,13 @@ function getUsersSettings(){
 }
 
 function hideDialog(user){
-	document.querySelectorAll('[data-list-id="' + user.id + '"]')[0].style.display = 'none';
+	if(document.URL == 'https://vk.com/im')
+		document.querySelectorAll('[data-list-id="' + user.id + '"]')[0].style.display = 'none';
 }
 
 function hideFriend(user){
-	
+	if(document.URL == 'https://vk.com/friends'){
+		var friend = document.getElementById('friends_user_row' + user.id);
+		friend.style.display = 'none';
+	}
 }
