@@ -26,6 +26,7 @@ function getUsersSettings(){
 		    		var user = usersArray[i];
 		    		hideDialog(user);
 		    		hideFriend(user);
+		    		hideFastChat(user);
 		    	}
 		    }
     	}
@@ -42,4 +43,9 @@ function hideFriend(user){
 		var friend = document.getElementById('friends_user_row' + user.id);
 		friend.style.display = 'none';
 	}
+}
+function hideFastChat(user){
+	var friend = document.getElementById('fc_contact' + user.id);
+	if(friend)
+		friend.style.display = 'none';
 }
