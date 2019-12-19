@@ -26,13 +26,13 @@ function addRow(tableId, rowData){
 	var removeBtn = document.getElementById(rowData.id);
 	removeBtn.addEventListener('click', function(e){
 		//Get user's id index from array
-		var index = usersArray.indexOf(removeBtn.attributes['userId'].value);
+		var index = usersArray.indexOf(rowData.id);
 		//remove note
 		usersArray.splice(index, 1);
 		//save array to storage
 		pushUsersArray('Value is removed from storage');
 
-		var rowI = document.getElementById(removeBtn.attributes['userId'].value).parentElement.parentElement.rowIndex;
+		var rowI = document.getElementById(rowData.id).parentElement.parentElement.rowIndex;
 
 		usersTable.deleteRow(rowI);
 	});
@@ -42,6 +42,7 @@ function addRow(tableId, rowData){
 let addUserInput = document.getElementById('addUserInput');
 addUserInput.addEventListener('keydown', function(e){
 	if(e.keyCode == 13){
+		//[A-z]*\W\/\/\w+\.[a-z]*\/.*=([0-9]*)
 		var user = makeUserSettings(addUserInput.value)
 		usersArray.push(user);
 		addRow('usersTable', user);

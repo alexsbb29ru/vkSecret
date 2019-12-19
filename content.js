@@ -24,9 +24,9 @@ function getUsersSettings(){
 		    {
 		    	for(var i = 0; i < usersArray.length; i ++){
 		    		var user = usersArray[i];
-		    		hideDialog(user);
-		    		hideFriend(user);
-		    		hideFastChat(user);
+		    		hideDialog(user);//Hide user from dialog list
+		    		hideFriend(user);//Hide user from friends list
+		    		hideFastChat(user);//Hide user from fast chat list
 		    	}
 		    }
     	}
