@@ -12,3 +12,7 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+.left_count_wrap{
+  display: none !important;
+}

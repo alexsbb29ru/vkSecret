@@ -26,7 +26,8 @@ function getUsersSettings(){
 		    		var user = usersArray[i];
 		    		hideDialog(user);//Hide user from dialog list
 		    		hideFriend(user);//Hide user from friends list
-		    		hideFastChat(user);//Hide user from fast chat list
+					hideFastChat(user);//Hide user from fast chat list
+					hideMessageIndicator();//Hide indicator
 		    	}
 		    }
     	}
@@ -34,8 +35,12 @@ function getUsersSettings(){
 }
 
 function hideDialog(user){
-	if(document.URL == 'https://vk.com/im')
+	if(document.URL == 'https://vk.com/im'){
 		document.querySelectorAll('[data-list-id="' + user.id + '"]')[0].style.display = 'none';
+		
+		//Huyarim
+		//document.getElementsByClassName('_im_dialog_unread_ct')[0].innerHTML
+	}
 }
 
 function hideFriend(user){
@@ -51,4 +56,8 @@ function hideFastChat(user){
 	var friend = document.getElementById('fc_contact' + user.id);
 	if(friend)
 		friend.style.display = 'none';
+}
+
+function hideMessageIndicator(){
+	// document.getElementsByClassName('left_count_wrap')[0].style.display = 'none !important';
 }
